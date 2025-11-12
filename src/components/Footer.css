@@ -1,0 +1,74 @@
+/* Footer - Compact Single Line Design */
+.footer {
+  background: rgba(10, 10, 21, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 12px 20px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-text {
+  color: #b0b0b0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  display: inline-block;
+}
+
+/* Club Link */
+.club-link {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.club-link:hover {
+  color: #ffed4e;
+  text-decoration: underline;
+}
+
+/* Team Member Links */
+.team-link {
+  color: #0077b5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.team-link:hover {
+  color: #00a0dc;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 15px;
+  }
+
+  .footer-text {
+    font-size: 0.75rem;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 8px 10px;
+  }
+
+  .footer-text {
+    font-size: 0.7rem;
+    line-height: 2;
+    display: block;
+  }
+}
