@@ -30,9 +30,9 @@ function Home() {
             <div className="home-title-section">
               <h1 className="home-main-title">mAITri</h1>
               <div className="home-year">2K26</div>
-              <div className="Date">14 & 15 November</div>
+              <p className="home-tagline">Bold, Mysterious, Unforgettable</p>
             </div>
-            <p className="home-tagline">Bold, Mysterious, Unforgettable</p>
+            <div className="Date">14 & 15 November</div>
           </div>
         </div>
       </div>

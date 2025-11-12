@@ -18,15 +18,15 @@ function Contact() {
   const teamHeads = [
     {
       id: 2,
-      name: 'Sinchana S Kini',
+      name: 'Sinchana Kini',
       role: 'Event President',
-      phone: '',
-      insta: 'https://instagram.com/_mourya__gowda_',
-      linkedin: 'https://linkedin.com/in/mourya-s'
+      phone: '+919019672633',
+      insta: 'https://instagram.com/sinchanakini',
+      linkedin: 'https://www.linkedin.com/in/sinchana-s-kini-7911b7266'
     },
     {
       id: 3,
-      name: 'Mr. Mourya S Gowda',
+      name: 'Mourya Gowda',
       role: 'Technical Head',
       phone: '+917795009361',
       insta: 'https://instagram.com/_mourya__gowda_',
@@ -36,7 +36,6 @@ function Contact() {
       id: 5,
       name: 'Vachan US',
       role: 'Volunteer Head',
-
       phone: '+919886323678',
       insta: 'https://instagram.com/vachan_18',
       linkedin: 'https://linkedin.com/in/vachan-u-s-0a5aa8128'
@@ -70,7 +69,7 @@ function Contact() {
 
         {/* Team Heads section - modern cards */}
         <div className="team-section">
-          <h3>Team Heads</h3>
+          <h3>Students Organising Committee</h3>
           
           {/* Team cards using modern design */}
           <div className="team-cards-container">
@@ -125,7 +124,7 @@ function Contact() {
               ></iframe>
             </div>
             <div className="location-details">
-              <p><strong>Dr. Ambedkar Institute of Technology</strong></p>
+              <p><strong>Dr. Ambedkar Institute of Technology (Dr.AIT)</strong></p>
               <p>Near Jnana Bharathi Campus, Bengaluru, Karnataka 560056</p>
             </div>
           </div>
@@ -140,7 +139,7 @@ function Contact() {
               </div>
               <div className="reach-out-item">
                 <h4>Phone</h4>
-                <p>+91 7795009361</p>
+                <p>+91 9380265537</p>
               </div>
               <div className="reach-out-item">
                 <h4>Location</h4>
@@ -148,7 +147,7 @@ function Contact() {
               </div>
               <div className="reach-out-item">
                 <h4>Event Date</h4>
-                <p>14th - 15th November 2026</p>
+                <p>14th - 15th November 2025</p>
               </div>
             </div>
           </div>

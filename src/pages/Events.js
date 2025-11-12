@@ -7,43 +7,43 @@ function Events() {
       title: 'Treasure Hunt',
       date: 'Day 1 - Morning',
       time: '10:00 AM - 12:00 PM',
-      description: 'Hands-on workshop on AI fundamentals and applications',
-      category: 'Workshop'
+      description: 'Gaming & Entiretinment',
+      category: 'Gaming'
     },
     {
       title: 'Ethnic Day',
       date: 'Day 1 - Afternoon',
       time: '2:00 PM - 4:00 PM',
-      description: 'Industry experts sharing insights on latest tech trends',
-      category: 'Talk'
+      description: 'Embrace tradition and celebrate cultural diversity on our Ethnic Day!',
+      category: 'Ethnic'
     },
     {
       title: 'Flashmob',
       date: 'Day 1 - Evening',
       time: '4:00 PM - 6:00 PM',
-      description: 'Dj Evening',
+      description: 'Get ready to groove with an energetic flashmob and an electrifying DJ evening!',
       category: 'DJ Evening'
     },
     {
-      title: 'Panel Discussion',
+      title: 'Dance, Singing & Fashoin Walk-1',
       date: 'Day 2 - Evening',
-      time: '7:00 PM - 8:30 PM',
+      time: '4:00 PM - 6:20 PM',
       description: 'Future of AI and its impact on society',
-      category: 'Discussion'
+      category: 'Event'
     },
     {
-      title: 'Project Showcase',
-      date: 'Day 3 - Morning',
-      time: '10:00 AM - 1:00 PM',
+      title: 'Inaugration & Movie Promotion',
+      date: 'Day 2 - Night',
+      time: '6:20 PM - 7:00 PM',
       description: 'Students presenting their innovative projects',
-      category: 'Showcase'
+      category: 'Event'
     },
     {
-      title: 'Closing Ceremony',
-      date: 'Day 3 - Afternoon',
-      time: '3:00 PM - 5:00 PM',
+      title: 'Dance, Singing & Fashion Walk-2',
+      date: 'Day 2 - Night',
+      time: '7:00 PM - 8:00 PM',
       description: 'Award ceremony and closing remarks',
-      category: 'Ceremony'
+      category: 'Event'
     }
   ];
 

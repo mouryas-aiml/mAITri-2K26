@@ -101,8 +101,8 @@
 }
 
 .home-logo {
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   animation: pulse 3s ease-in-out infinite;
   filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.4));
 }
@@ -223,6 +223,7 @@
   font-weight: 400;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
   opacity: 0.9;
+  font-family: 'Creepster', 'Nosifer', 'Impact', 'Arial Black', sans-serif;
 }
 
 @keyframes fadeInUp {
@@ -238,13 +239,14 @@
 
 /* Tagline */
 .home-tagline {
-  font-size: 2.5rem;
-  color: #fff;
+  font-family: 'Creepster', 'Nosifer', 'Impact', 'Arial Black', sans-serif;
+  font-size: 2rem;
+  color: #ffea00;
   font-weight: 300;
   letter-spacing: 3px;
-  margin: 40px 0;
+  margin: 10px 0;
   animation: fadeIn 1s ease-out 0.6s both;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(232, 230, 230, 0.5);
   font-style: italic;
 }
 
@@ -350,8 +352,8 @@
   }
 
   .home-main-title {
-    font-size: 8rem;
-    letter-spacing: 8px;
+    font-size: 10rem;
+    letter-spacing: 10px;
   }
 
   .home-year {
@@ -495,7 +497,7 @@
 
 .college-image img {
   width: 100%;
-  height: 400px;
+  height: 350px;
   object-fit: cover;
   display: block;
   border: 2px solid rgba(255, 215, 0, 0.3);
