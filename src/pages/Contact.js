@@ -1,27 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Pages.css';
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Replace alert with real submission logic
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
 
   // Team members - replace placeholder images and contact links with real data
   const teamMembers = [
