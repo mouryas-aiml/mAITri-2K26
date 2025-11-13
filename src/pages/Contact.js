@@ -21,7 +21,7 @@ function Contact() {
     },
     {
       id: 3,
-      name: 'Dr. Kestara',
+      name: 'Dr. Kesthara V',
       designation: 'Student Welfare Coordinator',
       phone: '+919900162313',
       photo: 'organising.jpg'
