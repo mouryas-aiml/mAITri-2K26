@@ -709,13 +709,12 @@
 
 /* Login Page Styles */
 .login-page .page-content {
-  max-width: 900px;
+  max-width: 600px;
 }
 
 .login-container {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
+  display: flex;
+  justify-content: center;
   margin-top: 40px;
 }
 
@@ -724,6 +723,8 @@
   border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: 15px;
   padding: 35px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .form-options {
@@ -828,13 +829,12 @@
 /* Responsive Design */
 @media (max-width: 968px) {
   .contact-container,
-  .registration-container,
-  .login-container {
+  .registration-container {
     grid-template-columns: 1fr;
   }
 
   .login-container {
-    grid-template-columns: 1fr;
+    padding: 0 20px;
   }
 
   .map-container iframe {

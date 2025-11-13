@@ -175,16 +175,6 @@ function Login() {
             </div>
           </form>
 
-          <div className="login-info">
-            <h3>Why Login?</h3>
-            <ul className="login-benefits">
-              <li>Track your registration status</li>
-              <li>Download your event pass</li>
-              <li>Receive event updates</li>
-              <li>View certificates and achievements</li>
-              <li>Access exclusive content</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
