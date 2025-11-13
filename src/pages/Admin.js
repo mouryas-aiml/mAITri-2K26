@@ -23,7 +23,7 @@ function Admin() {
   
   // Admin credentials (in production, use environment variables or Firebase Auth)
   const ADMIN_USERNAME = 'Mr Mourya';
-  const ADMIN_PASSWORD = 'Mourya@190405';
+  const ADMIN_PASSWORD = '190405@Mourya';
 
   // Helper function to determine if a registration is confirmed/approved
   const isConfirmed = (registration) => {
