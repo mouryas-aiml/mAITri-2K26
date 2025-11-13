@@ -96,13 +96,10 @@ function Home() {
           <div className="sponsors-marquee">
             <div className="sponsors-track">
               <div className="sponsor-logo">
-                <img src="/sponsors/college.jpg" alt="Sponsor 1" />
+                <img src="/sponser/insightsias.png" alt="Insights IAS" />
               </div>
               <div className="sponsor-logo">
-                <img src="/sponsors/college.jpg" alt="Sponsor 2" />
-              </div>
-              <div className="sponsor-logo">
-                <img src="/sponsors/sponsor3.png" alt="Sponsor 3" />
+                <img src="/sponser/jvglobal.jpg" alt="JV Global" />
               </div>
             </div>
           </div>
