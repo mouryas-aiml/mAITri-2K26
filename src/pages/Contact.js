@@ -23,7 +23,7 @@ function Contact() {
       id: 3,
       name: 'Dr. Kestara',
       designation: 'Student Welfare Coordinator',
-      phone: '+919380265539',
+      phone: '+919900162313',
       photo: 'organising.jpg'
     }
   ];
@@ -138,10 +138,6 @@ function Contact() {
                 title="Dr. Ambedkar Institute of Technology Location"
               ></iframe>
             </div>
-            <div className="location-details">
-              <p><strong>Dr. Ambedkar Institute of Technology (Dr.AIT)</strong></p>
-              <p>Near Jnana Bharathi Campus, Bengaluru, Karnataka 560056</p>
-            </div>
           </div>
 
           {/* Right side - Reach Out section */}
@@ -154,15 +150,11 @@ function Contact() {
               </div>
               <div className="reach-out-item">
                 <h4>Phone</h4>
-                <p>+91 9380265537</p>
+                <p>+917795009361 / +91 9380265537</p>
               </div>
               <div className="reach-out-item">
-                <h4>Location</h4>
-                <p>Dr. Ambedkar Institute of Technology<br/>Bengaluru, Karnataka</p>
-              </div>
-              <div className="reach-out-item">
-                <h4>Event Date</h4>
-                <p>14th - 15th November 2025</p>
+                <h4>Address</h4>
+                <p><strong>Dr. Ambedkar Institute of Technology</strong><br/>Near Jnana Bharathi Campus, Bengaluru, Karnataka 560056</p>
               </div>
             </div>
           </div>

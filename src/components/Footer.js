@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   // Team members data - Update with actual LinkedIn URLs
   const teamMembers = [
-    { name: 'Mourya S Gowda', linkedin: 'https://www.linkedin.com/in/mourya-s' },
+    { name: <strong>'Mourya S Gowda'</strong>, linkedin: 'https://www.linkedin.com/in/mourya-s'},
   ];
 
   return (
