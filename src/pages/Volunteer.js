@@ -51,13 +51,23 @@ function Volunteer() {
       const querySnapshot = await getDocs(collection(db, 'registrations'));
       const data = [];
       querySnapshot.forEach((doc) => {
+        const docData = doc.data();
         data.push({
           id: doc.id,
-          ...doc.data()
+          ...docData
         });
       });
       setRegistrations(data);
       console.log(`Fetched ${data.length} registrations`);
+      
+      // Debug: Log the status values to see what's actually in the database
+      const statusCounts = {};
+      data.forEach(reg => {
+        const status = reg.status || 'undefined';
+        statusCounts[status] = (statusCounts[status] || 0) + 1;
+      });
+      console.log('Status distribution:', statusCounts);
+      
     } catch (err) {
       console.error('Error fetching registrations:', err);
       setError('Failed to fetch registrations. Please check your permissions.');
@@ -79,6 +89,23 @@ function Volunteer() {
     } catch (error) {
       console.error('Error updating emergency:', error);
       alert('Failed to update emergency status.');
+    }
+  };
+
+  // Toggle student entry/exit status
+  const toggleStudentStatus = async (registrationId, currentStatus) => {
+    try {
+      const newStatus = currentStatus === 'in' ? 'out' : 'in';
+      await updateDoc(doc(db, 'registrations', registrationId), {
+        entryStatus: newStatus,
+        lastStatusUpdate: new Date()
+      });
+      // Refresh the registrations list
+      fetchRegistrations();
+      console.log(`Student status updated to: ${newStatus}`);
+    } catch (error) {
+      console.error('Error updating student status:', error);
+      alert('Failed to update student status.');
     }
   };
 
@@ -123,11 +150,31 @@ function Volunteer() {
       return () => clearInterval(interval);
     } else if (isVolunteer && activeTab === 'registrations') {
       fetchRegistrations();
+      // Auto-refresh registrations every 30 seconds
+      const interval = setInterval(fetchRegistrations, 30000);
+      return () => clearInterval(interval);
     }
   }, [activeTab, isVolunteer]);
 
   const openGoogleMaps = (lat, lng) => {
     window.open(`https://www.google.com/maps?q=${lat},${lng}`, '_blank');
+  };
+
+  // Helper function to determine if a registration is confirmed
+  const isConfirmed = (registration) => {
+    if (!registration.status) return false;
+    const status = registration.status.toLowerCase();
+    return status === 'confirmed' || 
+           status === 'approved' || 
+           status === 'accepted' ||
+           status.includes('confirm') ||
+           status.includes('approv');
+  };
+
+  // Helper function to get display status
+  const getDisplayStatus = (registration) => {
+    if (!registration.status) return 'pending';
+    return registration.status.toLowerCase();
   };
 
   if (loading) {
@@ -272,15 +319,21 @@ function Volunteer() {
                 <p className="stat-number">{registrations.length}</p>
               </div>
               <div className="stat-card">
-                <h3>Pending</h3>
-                <p className="stat-number">
-                  {registrations.filter((r) => r.status === 'pending').length}
-                </p>
-              </div>
-              <div className="stat-card">
                 <h3>Confirmed</h3>
                 <p className="stat-number">
-                  {registrations.filter((r) => r.status === 'confirmed').length}
+                  {registrations.filter(isConfirmed).length}
+                </p>
+              </div>
+              <div className="stat-card entry-stat">
+                <h3>Students IN</h3>
+                <p className="stat-number">
+                  {registrations.filter((r) => r.entryStatus === 'in').length}
+                </p>
+              </div>
+              <div className="stat-card exit-stat">
+                <h3>Students OUT</h3>
+                <p className="stat-number">
+                  {registrations.filter((r) => r.entryStatus === 'out' || !r.entryStatus).length}
                 </p>
               </div>
             </div>
@@ -302,6 +355,7 @@ function Volunteer() {
                       <th>Year</th>
                       <th>Events</th>
                       <th>Status</th>
+                      <th>Entry Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -317,9 +371,18 @@ function Volunteer() {
                           {Array.isArray(reg.events) ? reg.events.join(', ') : 'None'}
                         </td>
                         <td>
-                          <span className={`status-badge status-${reg.status || 'pending'}`}>
-                            {reg.status || 'pending'}
+                          <span className={`status-badge status-${getDisplayStatus(reg)}`}>
+                            {getDisplayStatus(reg)}
                           </span>
+                        </td>
+                        <td>
+                          <button
+                            className={`entry-status-toggle ${reg.entryStatus === 'in' ? 'status-in' : 'status-out'}`}
+                            onClick={() => toggleStudentStatus(reg.id, reg.entryStatus || 'out')}
+                            title={`Click to mark as ${reg.entryStatus === 'in' ? 'OUT' : 'IN'}`}
+                          >
+                            {reg.entryStatus === 'in' ? '🟢 IN' : '🔴 OUT'}
+                          </button>
                         </td>
                       </tr>
                     ))}

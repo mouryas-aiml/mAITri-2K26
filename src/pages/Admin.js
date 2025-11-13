@@ -25,6 +25,23 @@ function Admin() {
   const ADMIN_USERNAME = 'Mr Mourya';
   const ADMIN_PASSWORD = 'Mourya@190405';
 
+  // Helper function to determine if a registration is confirmed/approved
+  const isConfirmed = (registration) => {
+    if (!registration.status) return false;
+    const status = registration.status.toLowerCase();
+    return status === 'confirmed' || 
+           status === 'approved' || 
+           status === 'accepted' ||
+           status.includes('confirm') ||
+           status.includes('approv');
+  };
+
+  // Helper function to get display status
+  const getDisplayStatus = (registration) => {
+    if (!registration.status) return 'pending';
+    return registration.status.toLowerCase();
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (credentials.username === ADMIN_USERNAME && credentials.password === ADMIN_PASSWORD) {
@@ -157,6 +174,15 @@ function Admin() {
       });
       setRegistrations(data);
       console.log(`Fetched ${data.length} registrations`);
+      
+      // Debug: Log the status values to see what's actually in the database
+      const statusCounts = {};
+      data.forEach(reg => {
+        const status = reg.status || 'undefined';
+        statusCounts[status] = (statusCounts[status] || 0) + 1;
+      });
+      console.log('Admin - Status distribution:', statusCounts);
+      
     } catch (err) {
       console.error('Error fetching registrations:', err);
       setError('Failed to fetch registrations. Please check your permissions.');
@@ -167,10 +193,6 @@ function Admin() {
 
   // Approve registration
   const handleApproveRegistration = async (registrationId, userId) => {
-    if (!window.confirm('Are you sure you want to approve this registration?')) {
-      return;
-    }
-    
     try {
       // Update registration status
       await updateDoc(doc(db, 'registrations', registrationId), {
@@ -187,7 +209,7 @@ function Admin() {
         });
       }
       
-      alert('✅ Registration approved successfully!');
+      console.log('✅ Registration approved successfully!');
       fetchRegistrations(); // Refresh the list
     } catch (error) {
       console.error('Error approving registration:', error);
@@ -223,6 +245,55 @@ function Admin() {
     } catch (error) {
       console.error('Error rejecting registration:', error);
       alert('❌ Failed to reject registration.');
+    }
+  };
+
+  // Approve all pending registrations
+  const handleApproveAll = async () => {
+    const pendingRegistrations = registrations.filter(r => r.status === 'pending');
+    
+    if (pendingRegistrations.length === 0) {
+      alert('No pending registrations to approve!');
+      return;
+    }
+
+    if (!window.confirm(`Are you sure you want to approve all ${pendingRegistrations.length} pending registrations?`)) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const updatePromises = [];
+      
+      // Update all pending registrations
+      pendingRegistrations.forEach(reg => {
+        updatePromises.push(
+          updateDoc(doc(db, 'registrations', reg.id), {
+            status: 'approved',
+            approvedAt: new Date(),
+            approvedBy: 'admin'
+          })
+        );
+        
+        // Update user status if userId exists
+        if (reg.userId) {
+          updatePromises.push(
+            updateDoc(doc(db, 'users', reg.userId), {
+              status: 'approved',
+              approvedAt: new Date()
+            })
+          );
+        }
+      });
+      
+      await Promise.all(updatePromises);
+      alert(`✅ Successfully approved ${pendingRegistrations.length} registrations!`);
+      fetchRegistrations(); // Refresh the list
+    } catch (error) {
+      console.error('Error approving all registrations:', error);
+      alert('❌ Failed to approve all registrations. Some may have been processed.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -369,12 +440,19 @@ function Admin() {
             <div className="stat-card">
               <h3>Confirmed</h3>
               <p className="stat-number">
-                {registrations.filter(r => r.status === 'confirmed').length}
+                {registrations.filter(isConfirmed).length}
               </p>
             </div>
           </div>
 
           <div className="admin-actions">
+            <button 
+              onClick={handleApproveAll} 
+              className="action-button approve-all-button"
+              disabled={loading || registrations.filter(r => r.status === 'pending').length === 0}
+            >
+              ✅ Approve All ({registrations.filter(r => r.status === 'pending').length})
+            </button>
             <button 
               onClick={fetchRegistrations} 
               className="action-button refresh-button"
@@ -450,8 +528,8 @@ function Admin() {
                               </button>
                             </div>
                           ) : (
-                            <span className={`status-badge status-${reg.status || 'pending'}`}>
-                              {reg.status || 'pending'}
+                            <span className={`status-badge status-${getDisplayStatus(reg)}`}>
+                              {getDisplayStatus(reg)}
                             </span>
                           )}
                         </td>

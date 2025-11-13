@@ -224,8 +224,8 @@
 
 /* Guest/Speakers Page Styles */
 .speakers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 30px;
   margin-top: 40px;
 }
@@ -237,6 +237,8 @@
   padding: 30px;
   text-align: center;
   transition: all 0.3s ease;
+  max-width: 350px;
+  width: 100%;
 }
 
 .speaker-card:hover {
@@ -246,8 +248,24 @@
 }
 
 .speaker-avatar {
-  font-size: 5rem;
-  margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.speaker-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-card:hover .speaker-avatar {
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .speaker-name {
@@ -1069,6 +1087,32 @@
   transform: translateY(-1px);
 }
 
+/* Approve All Button */
+.approve-all-button {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  border: 2px solid #4caf50;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.approve-all-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  border-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.approve-all-button:disabled {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 /* Registration Status Card */
 .registration-status-card {
   background: rgba(255, 255, 255, 0.05);
@@ -1191,6 +1235,193 @@
     width: 160px;
     height: 160px;
   }
+}
+
+/* Organising Committee Image Styles */
+.organising-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.organising-image-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  width: 100%;
+}
+
+.organising-image-card:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #ffd700;
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.organising-committee-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Organising Committee Details Styles */
+.organising-details-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  justify-items: center;
+}
+
+.organising-detail-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.organising-detail-card:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #ffd700;
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+  transform: translateY(-8px);
+}
+
+.organising-member-name {
+  color: #ffd700;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.organising-member-designation {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.organising-member-contact {
+  color: #b0b0b0;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Students Committee Styles */
+.students-committee-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.student-member-card {
+  background: rgba(255, 215, 0, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 200px;
+}
+
+.student-member-card:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+.student-member-info {
+  margin-bottom: 20px;
+}
+
+.student-member-name {
+  color: #ffd700;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.student-member-role {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.student-member-phone {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.student-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: #ffd700;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  fill: #fff;
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  border-color: #e6683c;
+}
+
+.social-link.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+}
+
+.social-link.phone:hover {
+  background: #4caf50;
+  border-color: #4caf50;
 }
 
 /* Legacy team styles (keeping for compatibility) */
@@ -1426,6 +1657,70 @@
     margin-bottom: 20px;
   }
 
+  .organising-image-container {
+    margin-bottom: 30px;
+  }
+
+  .organising-image-card {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .organising-committee-image {
+    height: 220px;
+  }
+
+  .organising-details-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .organising-detail-card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .organising-member-name {
+    font-size: 1.2rem;
+  }
+
+  .organising-member-designation {
+    font-size: 1rem;
+  }
+
+  .students-committee-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .student-member-card {
+    padding: 20px;
+    min-height: 180px;
+  }
+
+  .student-member-name {
+    font-size: 1.1rem;
+  }
+
+  .student-member-role {
+    font-size: 0.9rem;
+  }
+
+  .student-social-links {
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+  }
+
+  .social-icon {
+    width: 18px;
+    height: 18px;
+  }
+
   .team-card--featured {
     max-width: 240px;
     padding: 16px;
@@ -1479,9 +1774,13 @@
 
   .highlights-grid,
   .events-grid,
-  .speakers-grid,
   .sponsors-grid-tier {
     grid-template-columns: 1fr;
+  }
+  
+  .speakers-grid {
+    flex-direction: column;
+    align-items: center;
   }
 
   .cta-section {
@@ -1678,10 +1977,76 @@
   border: 1px solid #ffc107;
 }
 
-.status-confirmed {
+.status-confirmed,
+.status-approved,
+.status-accepted {
   background: rgba(76, 175, 80, 0.2);
   color: #4caf50;
   border: 1px solid #4caf50;
+}
+
+.status-rejected,
+.status-declined {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid #f44336;
+}
+
+/* Entry Status Toggle Button */
+.entry-status-toggle {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 80px;
+}
+
+.entry-status-toggle.status-in {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 2px solid #4caf50;
+}
+
+.entry-status-toggle.status-in:hover {
+  background: rgba(76, 175, 80, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.entry-status-toggle.status-out {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 2px solid #f44336;
+}
+
+.entry-status-toggle.status-out:hover {
+  background: rgba(244, 67, 54, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+/* Entry/Exit Stat Cards */
+.stat-card.entry-stat {
+  border-left: 4px solid #4caf50;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+}
+
+.stat-card.entry-stat h3 {
+  color: #4caf50;
+}
+
+.stat-card.exit-stat {
+  border-left: 4px solid #f44336;
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(244, 67, 54, 0.05));
+}
+
+.stat-card.exit-stat h3 {
+  color: #f44336;
 }
 
 @media (max-width: 768px) {
