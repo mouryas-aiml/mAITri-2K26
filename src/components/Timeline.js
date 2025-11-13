@@ -15,13 +15,9 @@ function Timeline() {
         const windowCenter = windowHeight / 2;
 
         // Calculate logo position based on scroll
-        // Logo moves along the timeline as user scrolls
         if (timelineTop < windowHeight && timelineTop + timelineHeight > 0) {
-          // Calculate how far through the timeline we've scrolled
           const scrolledIntoView = Math.max(0, windowCenter - timelineTop);
           const scrollProgress = scrolledIntoView / timelineHeight;
-          
-          // Clamp between 0 and timeline height
           const newPosition = Math.max(0, Math.min(scrollProgress * timelineHeight, timelineHeight - 150));
           setLogoPosition(newPosition);
         }
@@ -34,20 +30,18 @@ function Timeline() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const day1Events = [
-    { id: '01', time: '3:00 PM', title: 'Opening Ceremony', description: 'Welcome & Introduction' },
-    { id: '02', time: '3:30 PM', title: 'Keynote Session', description: 'AI & Innovation' },
-    { id: '03', time: '4:30 PM', title: 'Workshop Session 1', description: 'Hands-on Learning' },
-    { id: '04', time: '5:30 PM', title: 'Networking Break', description: 'Connect & Collaborate' },
-    { id: '05', time: '6:00 PM', title: 'Panel Discussion', description: 'Future of AI' }
-  ];
-
-  const day2Events = [
-    { id: '06', time: '3:00 PM', title: 'Technical Talks', description: 'Expert Insights' },
-    { id: '07', time: '4:00 PM', title: 'Workshop Session 2', description: 'Advanced Topics' },
-    { id: '08', time: '5:00 PM', title: 'Project Showcase', description: 'Student Innovations' },
-    { id: '09', time: '5:45 PM', title: 'Awards Ceremony', description: 'Recognition & Prizes' },
-    { id: '10', time: '6:15 PM', title: 'Closing Ceremony', description: 'Thank You & Farewell' }
+  // Merged all events into a single array for one-day display
+  const dayEvents = [
+    { id: '01', time: '04:30 PM to 05:30 PM', title: 'Kickstart the Celebration!', description: 'Musical Band - Vishnu, Solo Dance - Disha, Duo Dance - Dhanush' },
+    { id: '02', time: '05:00 PM – 05:30 PM', title: 'Rhythmic Harmony', description: 'Group Dance - Pragathi, Duo Performance - Dhanush (second set)' },
+    { id: '03', time: '05:30 PM – 05:45 PM', title: 'The Ceremonial Spark', description: 'Hands-on Learning' },
+    { id: '04', time: '05:45 PM – 06:15 PM', title: 'Evening Elegance', description: 'Solo Dance - Keerthana, Live Act - Smooth Operators' },
+    { id: '05', time: '06:15 PM – 06:45 PM', title: 'Grace & Groove', description: 'Solo Dance - Jessi, Group Dance - Keerthana (group)' },
+    { id: '06', time: '06:45 PM – 07:15 PM', title: 'Twin Sparks', description: 'Solo Dance - Garvi, Duo Dance - Nishitha' },
+    { id: '07', time: '07:15 PM – 07:45 PM', title: 'Musical Breeze', description: 'Musical Band - Dhanya, Solo Performance - Sasniri Naik' },
+    { id: '08', time: '07:45 PM – 08:15 PM', title: 'Creative Showcase', description: 'Thematic Group - ,Dance-Info Aura, Dance Club Performance - Chethan' },
+    { id: '09', time: '08:15 PM – 08:45 PM', title: 'Glam & Giggles', description: 'Stand-up Act - Anith, Fashion Walk - Team IRA' },
+    { id: '10', time: '08:45 PM – 09:15 PM', title: 'Grand Finale', description: 'Dance Club Rajah, Ganesh Kashyap – Closing Act' }
   ];
 
   return (
@@ -65,36 +59,12 @@ function Timeline() {
         <img src="/logo192.png" alt="mAITri Logo" />
       </div>
 
-      {/* Day 1 */}
+      {/* Single merged day (all events) */}
       <div className="timeline-day">
-        <h3 className="day-title">Day 1 - November 14, 2025</h3>
+        <h3 className="day-title">Event Schedule</h3>
         <div className="timeline-container">
           <div className="timeline-line"></div>
-          {day1Events.map((event, index) => (
-            <div 
-              key={event.id} 
-              className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-            >
-              <div className="timeline-content">
-                <div className="event-number">{event.id}</div>
-                <div className="event-details">
-                  <h4 className="event-title">{event.title}</h4>
-                  <p className="event-time">{event.time}</p>
-                  <p className="event-description">{event.description}</p>
-                </div>
-              </div>
-              <div className="timeline-dot"></div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Day 2 */}
-      <div className="timeline-day">
-        <h3 className="day-title">Day 2 - November 15, 2025</h3>
-        <div className="timeline-container">
-          <div className="timeline-line"></div>
-          {day2Events.map((event, index) => (
+          {dayEvents.map((event, index) => (
             <div 
               key={event.id} 
               className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}

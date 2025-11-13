@@ -11,7 +11,7 @@
 }
 
 .timeline-heading {
-  font-family: 'Zombice', 'Impact', sans-serif;
+  font-family: 'Creepster', 'Nosifer', 'Impact', 'Arial Black', sans-serif;
   font-size: 2.5rem;
   color: #ffd700;
   text-align: center;
@@ -25,7 +25,7 @@
 .timeline-logo {
   position: absolute;
   left: 50%;
-  top: 100px;
+  top: 0px;
   width: 60px;
   height: 60px;
   margin-left: -30px;
